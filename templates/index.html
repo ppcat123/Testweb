@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Streamer</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    .spinner {
+      border: 4px solid transparent;
+      border-top: 4px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white text-center p-4">
+  <h1 class="text-3xl font-bold mb-4">Anime Streamer</h1>
+  <form action="/search" method="get">
+    <input name="q" type="text" placeholder="Search anime..." class="text-black p-2 rounded">
+    <button class="bg-blue-500 p-2 rounded">Search</button>
+  </form>
+
+  <!-- Loading spinner -->
+  <div id="loading" class="hidden">
+    <div class="spinner mx-auto mt-4"></div>
+    <p class="text-white">Loading...</p>
+  </div>
+
+  <script>
+    // Show loading spinner when searching
+    const form = document.querySelector('form');
+    form.onsubmit = function() {
+      document.getElementById('loading').classList.remove('hidden');
+    };
+  </script>
+</body>
+</html>
